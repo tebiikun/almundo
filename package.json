@@ -10,9 +10,24 @@
   "author": "esteban ciccarelli",
   "license": "ISC",
   "dependencies": {
+    "angular": "^1.5.8",
+    "angular-ui-router": "^0.4.3",
     "bootstrap": "^3.3.7",
+    "express": "",
     "jquery": "^3.2.1",
-    "restler": "3.4.0",
-    "express": ""
+    "restler": "3.4.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-clean-css": "^3.9.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-inject": "^4.3.0",
+    "gulp-live-server": "0.0.31",
+    "gulp-rev": "^8.0.0",
+    "gulp-sequence": "^0.4.6",
+    "gulp-uglify": "^3.0.0",
+    "gulp-watch": "^4.3.11"
   }
 }
