@@ -21,7 +21,11 @@
     <body>
     <h1>{{titulo}}</h1>
 
+    <ng-include src="'views/header.html'"></ng-include>
+
     <ui-view></ui-view>
+
+    <ng-include src="'views/footer.html'"></ng-include>
 
     <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
 

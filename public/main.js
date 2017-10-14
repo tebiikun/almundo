@@ -17,18 +17,6 @@ angular.module('amApp.constants', [])
   .constant('API_END_POINT', 'http://localhost:3000/api/')
 
 angular.module('amApp')
-.controller("HotelController", [ '$scope', '$http', 'HotelService', 
-	function($scope, $http, HotelService){
-
-    HotelService.all()
-    .then(function (response){
-    	$scope.hoteles = response;
-    }, function (error) {
-    	$scope.status = 'Unable to load: ' + error.message;
-    });
-
-}]);
-angular.module('amApp')
   .factory('HotelService', ['$http', 'API_END_POINT', function($http, API_END_POINT) {
 
     return {
@@ -42,3 +30,20 @@ angular.module('amApp')
     }
 
   }])
+
+angular.module('amApp')
+.controller("HotelController", [ '$scope', '$http', 'HotelService', 
+	function($scope, $http, HotelService){
+
+
+    HotelService.all()
+    .then(function (response){
+    	console.log(response);
+    	$scope.hoteles = response;
+    }, function (error) {
+    	$scope.status = 'Unable to load: ' + error.message;
+    });
+
+
+
+}]);

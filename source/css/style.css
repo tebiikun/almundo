@@ -1,0 +1,235 @@
+.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
+    padding-right: 8px;
+    padding-left: 8px;
+}
+
+.row {
+    margin-right: -8px;
+    margin-left: -8px;
+}
+.header-almundo{
+	background: rgba(0,44,119,.7);
+	height: 80px;
+	padding-top:15px;
+}
+.footer-almundo{
+	background: rgba(0,44,119,.7);
+	height: 300px;
+}
+
+body{
+	font-family: 'Roboto', sans-serif;
+}
+
+.h1, .h2, .h3, h1, h2, h3 {
+	font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+
+[class*="col-"]{
+    display: inline-block;
+    vertical-align: top;
+    zoom: 1;
+    margin: 0;
+ }
+
+section{
+	background-color: #f4f4f4;
+	padding: 30px 0 30px 0;
+}
+
+.button-almundo-view{
+	border-radius: 4px;
+	text-align: center;
+	-webkit-font-smoothing: antialiased;
+	cursor: pointer;
+	text-decoration: none;
+    font-size: 1.5em;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 16px;
+    font-weight: bold;
+    background-color: #002C77;
+    color: #fff;
+    box-shadow: 0 -2px 0 #00163C inset;
+    width: 100%;
+    display: block;
+}
+.button-almundo-view:hover{
+	text-decoration: none;
+	color: #fff;
+}
+.padding-no{
+	padding: 0;
+}
+.padding-left-no{
+	padding-left: 0; 
+}
+.padding-right-no{
+	padding-right: 0; 
+}
+
+.container-hotel-data{
+	padding: 8px;
+    background-color: #fff;
+    margin-bottom: 15px;
+}
+
+.container-hotel-data .col-4{
+	width: 33.333333%;
+}
+.container-hotel-data .col-5{
+	width: 41.6666667%;
+}
+.container-hotel-data .col-3{
+	width: 25%;
+}
+
+.hotel-image>img{
+	width: 100%;
+	height: 192px;
+}
+.hotel-description{
+	padding: 0 15px 0 15px;
+}
+.hotel-price{
+	border-left: 1px dashed #CCC;
+	min-height: 192px;
+	padding: 24px 24px 0px 32px;
+	text-align: center;
+}
+.hotel-price button{
+	width: 100%;
+}
+.hotel-price .price-orange{
+	color: #DF6800;
+}
+.hotel-price .price-prefix{
+	font-size: 1.5em;
+    line-height: 40px;
+    vertical-align: super;
+}
+.hotel-price .price-number{
+	font-size: 2.5em;
+	font-weight: bold;
+}
+.hotel-price .price-desc{
+	font-size: 0.9em;
+}
+.content-price>p{
+	margin-bottom: 0;
+}
+
+.hotel-description h3{
+    color: #157ab1;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 24px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis; 
+}
+
+.stars-description{
+	margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.shadow{
+	-webkit-box-shadow: 0px 0px 5px 0px rgba(204,204,204,0.5);
+	-moz-box-shadow: 0px 0px 5px 0px rgba(204,204,204,0.5);
+	box-shadow: 0px 0px 5px 0px rgba(204,204,204,0.5);
+}
+
+.filter{
+	background-color: #fff;
+}
+
+.filter>div{
+	display: block;
+    overflow: hidden;
+    border-bottom: 4px solid #f4f4f4;
+    padding: 5px 16px;
+}
+
+
+.filters-tittle h4{
+	font-weight: 600;
+}
+
+.filters-hotel input, .filters-hotel button {
+	width:100%;
+}
+.filter-star-container>div{
+	padding: 4px 0; 
+}
+
+.content-price{
+
+}
+
+.rating{
+	display:inline-block;
+}
+
+.star-icon{
+    width: 17px;
+    height: 17px;
+    display: block;
+	background-image: url(../images/icons/filters/star.svg);
+}
+
+.amenities{
+	padding-right: 10px;
+	display: inline-block;
+}
+.amenities img{
+	width: 20px;
+	height: 20px;
+}
+
+
+
+@media (max-width: 1200px){
+	.button-almundo-view{
+		font-size: 1.2em;
+	}
+	.hotel-price .price-prefix{
+		font-size: 1.2em;
+	}
+	.hotel-price .price-number{
+		font-size: 2.2em;
+	}
+}
+
+@media (max-width: 600px) {
+	.container-hotel-data .col-5{
+		width: 100%;
+		padding: 15px 0 30px 0;
+	}
+	.container-hotel-data .col-4{
+		width: 100%;
+	}
+	.container-hotel-data .col-3{
+		width: 100%;
+	}
+	.hotel-price{
+		border-top: 1px dashed #CCC;
+		border-left: none;
+	}
+	.hotel-image{
+		padding: 0;
+	}
+	.hotel-price .price-prefix{
+		font-size: 1.5em;
+	}
+	.button-almundo-view{
+		font-size: 1.5em;
+	}
+	.hotel-price .price-number{
+		font-size: 2.5em;
+	}
+}

@@ -10,6 +10,7 @@
 
         <!-- inject:css -->
         <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/css/main.css">
         <!-- endinject -->
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -21,7 +22,11 @@
     <body>
     <h1>{{titulo}}</h1>
 
+    <ng-include src="'views/header.html'"></ng-include>
+
     <ui-view></ui-view>
+
+    <ng-include src="'views/footer.html'"></ng-include>
 
     <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
 

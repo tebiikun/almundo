@@ -15,6 +15,7 @@
     "bootstrap": "^3.3.7",
     "express": "",
     "jquery": "^3.2.1",
+    "underscore": "1.8.3",
     "restler": "3.4.0"
   },
   "devDependencies": {

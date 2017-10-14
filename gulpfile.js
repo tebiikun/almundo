@@ -14,7 +14,8 @@ var gulp = require('gulp'),
  var librariesJS = [
  	'./node_modules/angular/angular.min.js',
  	'./node_modules/angular-ui-router/release/angular-ui-router.min.js',
- 	'./node_modules/bootstrap/dist/js/bootstrap.min.js'
+ 	'./node_modules/bootstrap/dist/js/bootstrap.min.js',
+ 	'./node_modules/underscore/underscore.js'
  ]
 
  var librariesCSS = [
@@ -40,7 +41,7 @@ gulp.task('build-vendor-js', function() {
  Concatenate js files into main.js
  */
 gulp.task('minify-js', function() {
-  return gulp.src(['./source/main.js', './source/js/**/*.js', '!./source/js/vendor/*.js'])
+  return gulp.src(['./source/main.js', './source/js/**/*.js'])
     .pipe(concat('main.js'))
     .pipe(gulp.dest('./public'))
 })
@@ -64,12 +65,9 @@ gulp.task('build-vendor-css', function() {
  Minify CSS files
  */
 gulp.task('minify-css', function() {
-  return gulp.src(['./source/css/**/*.css', '!./source/css/vendor/*.css'])
+  return gulp.src(['./source/css/*.css'])
     .pipe(concat('main.css'))
     .pipe(cleanCSS({compatibility: 'ie8'}))
-    .pipe(rev())
-    .pipe(gulp.dest('./public/assets/css'))
-    .pipe(rev.manifest())
     .pipe(gulp.dest('./public/assets/css'))
 })
 
@@ -78,7 +76,7 @@ gulp.task('minify-css', function() {
  Delete all files in assets folder.
  */
 gulp.task('clean-assets', function() {
-  return gulp.src(['./public/assets/css', './public/assets/js', './public/views/*.html', './source/css/*.css'], {read: false})
+  return gulp.src(['./public/assets/css', './public/assets/js', './public/views/*.html'], {read: false})
     .pipe(clean())
 })
 
@@ -100,7 +98,7 @@ gulp.task('connect', function() {
   })
 
   // Frontend changes
-  gulp.watch(['source/**/*'], function(file) {
+  gulp.watch(['./source/**/*'], function(file) {
     setTimeout(function() {
       server.notify.bind(server)(file)
     }, 1000)
