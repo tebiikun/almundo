@@ -4,52 +4,53 @@
 			<div class="col-lg-3 col-md-3 col-xs-12 col-sm-12">
 				<div class="row">
 					<div class="col-md-12 col-xs-12 col-sm-12">
-						<div class="filter shadow">
-							<div class="filters-tittle">
-								<input class="toggle-box" id="filter-master" class="collapsable-checkbox" type="checkbox">
-								<h4>
-									<label for="filter-master" style="width: 100%;">Filtros
-									<span style="float: right;">o</span>
-									</label>
-
-								</h4>
-							</div>
-							<div class="filters-hotel">
-								<input class="toggle-box" id="filter-hotel-check" ng-model="filterHotel" class="collapsable-checkbox" type="checkbox">
-								<h4>
-									<label for="filter-hotel-check" style="width: 100%;">Nombre del Hotel
-									<span style="float: right;">o</span>
-									</label>
-								</h4>
-								<div class="col-md-12 col-xs-12 col-sm-12 padding-no">
-									<div class="col-md-8 padding-left-no">
-										<input type="text" ng-model="nameFilter" placeholder="Ingrese nombre del Hotel">
+						<div class="shadow">
+							<input class="toggle-box" id="filter-master" ng-model="filterMaster" class="collapsable-checkbox" type="checkbox">
+							<span class="filter-master-tittle">
+								<label for="filter-master" class="filter-padding">Filtros
+									<span class="arrow-collapse" ng-class="filterMaster ? 'fa fa-sort-asc':'fa fa-sort-desc'"></span>
+								</label>
+							</span>
+							<div>
+								<div class="filters-hotel">
+									<input class="toggle-box" id="filter-hotel-check" ng-model="filterHotel" class="collapsable-checkbox" type="checkbox">
+									<span class="filter-hotel-tittle">
+										<label for="filter-hotel-check" class="filter-padding">
+											<lens class="icons-filter"></lens>Nombre del Hotel
+											<span class="arrow-collapse" ng-class="filterHotel ? 'fa fa-sort-asc':'fa fa-sort-desc'"></span>
+										</label>
+									</span>
+									<div class="filter-hotel-content filter-padding">
+										<div class="col-md-8 padding-left-no">
+											<input type="text" ng-model="nameFilter" placeholder="Ingrese nombre del Hotel">
+										</div>
+										<div class="col-md-4 padding-right-no">
+											<button class="button-almundo-view search-button" ng-click="setFilters('name')"> Aceptar</button>
+										</div>
+										
 									</div>
-									<div class="col-md-4 padding-right-no">
-										<button class="button-almundo-view search-button" ng-click="setFilters('name')"> Aceptar</button>
-									</div>
-									
 								</div>
-							</div>
-							<div class="filters-star">
-								<input class="toggle-box" id="filter-star-check" ng-model="filterStar" class="collapsable-checkbox" type="checkbox">
-								<h4>
-									<label for="filter-star-check" style="width: 100%;">Estrellas
-									<span style="float: right;">o</span>
-									</label>
-								</h4>
-								<div class="filter-star-container">
-									<div class="filter-star-list">
-										<label>
-											<input type="checkbox" ng-model="filterAllStars" ng-click="setFilters('all')" ng-disabled="filterAllStars">
-											<span>Todas las estrellas</span>
+								<div class="filters-star">
+									<input class="toggle-box" id="filter-star-check" ng-model="filterStar" class="collapsable-checkbox" type="checkbox">
+									<span class="filter-stars-tittle">
+										<label for="filter-star-check" class="filter-padding">
+											<span><rating class="icons-filter"></rating></span>Estrellas
+											<span class="arrow-collapse" ng-class="filterStar ? 'fa fa-sort-asc':'fa fa-sort-desc'"></span>
 										</label>
-									</div>
-									<div class="filter-star-list" ng-repeat="filterStars in filterArrayStars">
-										<label>
-											<input type="checkbox" ng-model="filterStars.value" ng-click="setFilters('stars')">
-											<span><rating rate="filterStars.filterValue" class="stars-inline"></rating></span>
-										</label>
+									</span>
+									<div class="filter-star-container filter-padding">
+										<div class="filter-star-list">
+											<label>
+												<input type="checkbox" ng-model="filterAllStars" ng-click="setFilters('all')" ng-disabled="filterAllStars">
+												<span>Todas las estrellas</span>
+											</label>
+										</div>
+										<div class="filter-star-list" ng-repeat="filterStars in filterArrayStars">
+											<label>
+												<input type="checkbox" ng-model="filterStars.value" ng-click="setFilters('stars')">
+												<span><rating rate="filterStars.filterValue" class="icons-filter"></rating></span>
+											</label>
+										</div>
 									</div>
 								</div>
 							</div>

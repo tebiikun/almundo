@@ -17,18 +17,24 @@ input[type="text"], input[type="search"], input[type="password"], input[type="em
     font-weight: normal;
     width: 100%;
 }
+label{
+	max-width: 100%;
+    margin-bottom: inherit;
+    font-weight: 700;
+    margin-bottom: 0;
+}
 
 .row {
     margin-right: -8px;
     margin-left: -8px;
 }
 .header-almundo{
-	background: rgba(0,44,119,.7);
+	background: #002c77;
 	height: 80px;
 	padding-top:15px;
 }
 .footer-almundo{
-	background: rgba(0,44,119,.7);
+	background: #002c77;
 	height: 300px;
 }
 
@@ -56,6 +62,18 @@ svg{
 section{
 	background-color: #f4f4f4;
 	padding: 30px 0 30px 0;
+}
+
+.arrow-collapse{
+	font-size: 18px;
+    float: right;
+}
+
+.fa-sort-asc{
+	margin-top:5px;
+}
+.fa-sort-desc{
+	margin-top:-5px;
 }
 
 .button-almundo-view{
@@ -172,18 +190,6 @@ section{
 	box-shadow: 0px 0px 5px 0px rgba(204,204,204,0.5);
 }
 
-.filter{
-	background-color: #fff;
-}
-
-.filter>div{
-	display: block;
-    overflow: hidden;
-    border-bottom: 4px solid #f4f4f4;
-    padding: 5px 16px;
-}
-
-
 .filters-tittle h4{
 	font-weight: 600;
 }
@@ -279,18 +285,26 @@ section{
   display: none;
 }
 
-.toggle-box + h4 {
+.toggle-box + span {
   display: block;
 }
 
-.toggle-box + h4 + div {
+.toggle-box + span + div {
   display: none;
 }
 
-.toggle-box:checked + h4 + div {
+.toggle-box:checked + span + div {
   display: block;
 }
-
+.icons-filter>div{
+	display: inline-block;
+    overflow: hidden;
+    width: 13px;
+    height: 13px;
+    float: left;
+    margin-right: 3px;
+    margin-top: 3px;
+}
 .stars-inline>div{
 	display: inline-block;
     overflow: hidden;
@@ -301,4 +315,41 @@ section{
 }
 .filter-star-list span, .filter-star-list input {
 	float: left;
+}
+
+.filter-padding{
+	padding: 8px 16px;
+    display: block;
+}
+
+.filter-master-tittle{
+	background-color: #fff;
+	color: #444444;
+}
+.filter-hotel-tittle{
+	background-color: #fff;
+	margin-top:4px;
+}
+.filter-stars-tittle{
+	background-color: #fff;
+	margin-top:4px;	
+}
+.filter-hotel-tittle>label{
+	font-size: 14px;
+	color:#157ab1;
+}
+.filter-stars-tittle>label{
+	font-size: 14px;
+	color:#157ab1;
+}
+
+.filter-star-container{
+	background-color: #fff;
+	color: #444444;
+}
+
+.filter-hotel-content{
+	display: block;
+	overflow: hidden;
+	background-color: #fff;
 }

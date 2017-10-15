@@ -22,6 +22,9 @@ angular.module('amApp')
 
 	$scope.filterHotel = true;
 	$scope.filterStar = true;
+	$scope.filterMaster = true;
+
+
 	$scope.filterAllStars = true;
 	$scope.nameFilter = '';
 	$scope.filterArrayStars = [
@@ -59,14 +62,17 @@ angular.module('amApp')
 			$scope.filterAllStars = false;
 			for(filter in $scope.filterArrayStars){
 				if($scope.filterArrayStars[filter].value == true){
+
 					checkboxFilter.push($scope.filterArrayStars[filter].filterValue);
 				}
 			}
 		} else{
-			for(filter in $scope.filterArrayStars){
-				console.log($scope.filterArrayStars[filter].filterValue);
-				$scope.filterArrayStars[filter].value = false;
+			if(typeFilter == 'all'){
+				for(filter in $scope.filterArrayStars){
+					$scope.filterArrayStars[filter].value = false;
+				}
 			}
+			
 		}
 
 		queryFilter = 'name='+ $scope.nameFilter + '&stars=' + checkboxFilter.toString();
@@ -105,6 +111,12 @@ angular.module('amApp')
 	  link: function(scope, element, attrs) {
 	    scope.range = new Array(scope.rate);
 	  }
+	};
+})
+
+.directive('lens', function() {
+	return {
+	  templateUrl: 'views/directives/lens.html'
 	};
 });
 angular.module('amApp')
