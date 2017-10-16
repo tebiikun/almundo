@@ -1,47 +1,61 @@
 angular.module('amApp')
-.controller("HotelController", [ '$scope', '$http', 'HotelService', 
-	function($scope, $http, HotelService){
+.controller("HotelController", [ '$scope', '$http', 'HotelService', 'FILTER_ALL_STARS', 'FILTER_STARS', 'FILTER_NAME', 
+	function($scope, $http, HotelService, FILTER_ALL_STARS, FILTER_STARS, FILTER_NAME){
 
 	$scope.filterHotel = true;
 	$scope.filterStar = true;
 	$scope.filterMaster = true;
 
 
-	$scope.filterAllStars = true;
-	$scope.nameFilter = '';
+	$scope.filterAllStars = {
+		value:true,
+		filterType: FILTER_ALL_STARS
+	}
+
+	$scope.nameFilter = {
+		value: '',
+		filterType:FILTER_NAME
+	}
+
 	$scope.filterArrayStars = [
 		{
 			filterValue:5,
-			value:false
+			value:false,
+			filterType:FILTER_STARS
 		},
 		{
 			filterValue:4,
-			value:false
+			value:false,
+			filterType:FILTER_STARS
 		},
 		{
 			filterValue:3,
-			value:false
+			value:false,
+			filterType:FILTER_STARS
 		},
 		{
 			filterValue:2,
-			value:false
+			value:false,
+			filterType:FILTER_STARS
 		},
 		{
 			filterValue:1,
-			value:false
+			value:false,
+			filterType:FILTER_STARS
 		}
 
 	];
 
-	/*	si el tipo de filtro es distinto de all				*/
+	/*	si el tipo de filtro es distinto de allStars		*/
 	/*  recorro y armo la query sino			 			*/
 	/* 	descheckeo todo los filtros de estrellas			*/
+
 	$scope.setFilters = function(typeFilter){
 		var queryFilter = '';
 		var checkboxFilter = [];
 
-		if(typeFilter == 'stars'){
-			$scope.filterAllStars = false;
+		if(typeFilter == FILTER_STARS){
+			$scope.filterAllStars.value = false;
 			for(filter in $scope.filterArrayStars){
 				if($scope.filterArrayStars[filter].value == true){
 
@@ -49,7 +63,7 @@ angular.module('amApp')
 				}
 			}
 		} else{
-			if(typeFilter == 'all'){
+			if(typeFilter == FILTER_ALL_STARS){
 				for(filter in $scope.filterArrayStars){
 					$scope.filterArrayStars[filter].value = false;
 				}
@@ -57,7 +71,7 @@ angular.module('amApp')
 			
 		}
 
-		queryFilter = 'name='+ $scope.nameFilter + '&stars=' + checkboxFilter.toString();
+		queryFilter = 'name='+ $scope.nameFilter.value + '&stars=' + checkboxFilter.toString();
 
 		HotelService.all(queryFilter)
 	    .then(function (response){
@@ -76,28 +90,4 @@ angular.module('amApp')
 
 
 
-}])
-
-.directive('starDirective', [function() {
-	return {
-	  templateUrl: 'views/directives/star.html'
-	};
-}])
-
-.directive('rating', function() {
-	return {
-	  scope: {
-	    rate: '='
-	  },
-	  templateUrl: 'views/directives/star.html',
-	  link: function(scope, element, attrs) {
-	    scope.range = new Array(scope.rate);
-	  }
-	};
-})
-
-.directive('lens', function() {
-	return {
-	  templateUrl: 'views/directives/lens.html'
-	};
-});
+}]);

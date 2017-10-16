@@ -20,20 +20,21 @@ var gulp = require('gulp'),
 
  var librariesCSS = [
  	'./node_modules/bootstrap/dist/css/bootstrap.min.css',
-  './node_modules/font-awesome/css/font-awesome.min.css'
+  './node_modules/font-awesome/css/font-awesome.min.css',
+  'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700'
  ]
 
 
 //****************************** JS ******************************
 
 gulp.task('js', function(callback) {
-  gulpSequence('build-vendor-js', 'minify-js')(callback)
+  gulpSequence('build-js', 'minify-js')(callback)
 })
 
 /*
- Build vendor JS folder
+ Build JS folder
  */
-gulp.task('build-vendor-js', function() {
+gulp.task('build-js', function() {
   return gulp.src(librariesJS)
     .pipe(gulp.dest('./public/assets/js'))
 })
@@ -51,13 +52,13 @@ gulp.task('minify-js', function() {
 //****************************** CSS ******************************
 
 gulp.task('css', function(callback) {
-  gulpSequence('build-vendor-css', 'minify-css')(callback)
+  gulpSequence('build-css', 'minify-css')(callback)
 })
 
 /*
- Build vendor CSS folder
+ Build CSS folder
  */
-gulp.task('build-vendor-css', function() {
+gulp.task('build-css', function() {
   return gulp.src(librariesCSS)
     .pipe(gulp.dest('./public/assets/css'))
 })

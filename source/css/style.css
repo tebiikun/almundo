@@ -2,6 +2,9 @@
     padding-right: 8px;
     padding-left: 8px;
 }
+input[type="checkbox"]{
+    margin: 4px 7px 0px 0;
+}
 input[type="text"], input[type="search"], input[type="password"], input[type="email"], input[type="tel"], input[type="number"], input[type="url"], input[type="date"], input[type="datetime"], input[type="month"], input[type="week"], input[type="time"], input[type="datetime-local"]{
 	border: 1px solid;
     background: #fff;
@@ -36,6 +39,8 @@ label{
 .footer-almundo{
 	background: #002c77;
 	height: 300px;
+	padding-top: 100px;
+	text-align: center;
 }
 
 body{
@@ -62,6 +67,7 @@ svg{
 section{
 	background-color: #f4f4f4;
 	padding: 30px 0 30px 0;
+	min-height: 600px;
 }
 
 .arrow-collapse{
@@ -141,7 +147,7 @@ section{
 .hotel-price{
 	border-left: 1px dashed #CCC;
 	min-height: 192px;
-	padding: 24px 24px 0px 32px;
+	padding: 24px 20px 0px 28px;
 	text-align: center;
 }
 .hotel-price button{
@@ -178,7 +184,6 @@ section{
 }
 
 .stars-description{
-	margin-top: 10px;
     margin-bottom: 10px;
     width: 100%;
     overflow: hidden;
@@ -231,7 +236,12 @@ section{
 	height: 20px;
 }
 
-
+#only-device{
+	display: none;
+}
+#only-desktop{
+	display: block;
+}
 
 @media (max-width: 1200px){
 	.button-almundo-view{
@@ -249,7 +259,7 @@ section{
 
 }
 
-@media (max-width: 600px) {
+@media (max-width: 740px) {
 	.container-hotel-data .col-5{
 		width: 100%;
 		padding: 15px 0 30px 0;
@@ -275,6 +285,30 @@ section{
 	}
 	.hotel-price .price-number{
 		font-size: 2.5em;
+	}
+	.container{
+		padding-right: 8px;
+		padding-left: 8px;
+	}
+	section{
+		padding: 0;
+	}
+	.filters{
+	    margin: 0px -8px 20px -8px;
+	}
+	.filter-hotel-content>div{
+		width: 100%;
+		padding: 0;
+		margin-bottom: 10px;
+	}
+	#only-device{
+		display: block;
+	}
+	#only-desktop{
+		display: none;
+	}
+	.stars-description{
+		margin-top: 10px;
 	}
 }
 
@@ -315,6 +349,9 @@ section{
 }
 .filter-star-list span, .filter-star-list input {
 	float: left;
+}
+.filter-star-list .icons-filter{
+	color: #fdba12;
 }
 
 .filter-padding{

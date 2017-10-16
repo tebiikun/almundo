@@ -4,9 +4,12 @@
 			<div class="col-lg-3 col-md-3 col-xs-12 col-sm-12">
 				<div class="row">
 					<div class="col-md-12 col-xs-12 col-sm-12">
-						<div class="shadow">
+						<div class="shadow filters">
+							<span class="filter-master-tittle" id="only-desktop">
+								<label class="filter-padding">Filtros</label>
+							</span>
 							<input class="toggle-box" id="filter-master" ng-model="filterMaster" class="collapsable-checkbox" type="checkbox">
-							<span class="filter-master-tittle">
+							<span class="filter-master-tittle" id="only-device">
 								<label for="filter-master" class="filter-padding">Filtros
 									<span class="arrow-collapse" ng-class="filterMaster ? 'fa fa-sort-asc':'fa fa-sort-desc'"></span>
 								</label>
@@ -21,11 +24,11 @@
 										</label>
 									</span>
 									<div class="filter-hotel-content filter-padding">
-										<div class="col-md-8 padding-left-no">
-											<input type="text" ng-model="nameFilter" placeholder="Ingrese nombre del Hotel">
+										<div class="col-md-8 col-sm-8 col-xs-12 padding-left-no">
+											<input type="text" ng-model="nameFilter.value" placeholder="Ingrese nombre del Hotel">
 										</div>
-										<div class="col-md-4 padding-right-no">
-											<button class="button-almundo-view search-button" ng-click="setFilters('name')"> Aceptar</button>
+										<div class="col-md-4 col-sm-4 col-xs-12 padding-right-no">
+											<button class="button-almundo-view search-button" ng-click="setFilters(nameFilter.filterType)"> Aceptar</button>
 										</div>
 										
 									</div>
@@ -41,13 +44,14 @@
 									<div class="filter-star-container filter-padding">
 										<div class="filter-star-list">
 											<label>
-												<input type="checkbox" ng-model="filterAllStars" ng-click="setFilters('all')" ng-disabled="filterAllStars">
+												<input type="checkbox" ng-model="filterAllStars.value" ng-click="setFilters(filterAllStars.filterType)" 
+													ng-disabled="filterAllStars.value">
 												<span>Todas las estrellas</span>
 											</label>
 										</div>
 										<div class="filter-star-list" ng-repeat="filterStars in filterArrayStars">
 											<label>
-												<input type="checkbox" ng-model="filterStars.value" ng-click="setFilters('stars')">
+												<input type="checkbox" ng-model="filterStars.value" ng-click="setFilters(filterStars.filterType)">
 												<span><rating rate="filterStars.filterValue" class="icons-filter"></rating></span>
 											</label>
 										</div>
