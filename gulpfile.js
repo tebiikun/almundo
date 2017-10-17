@@ -8,8 +8,7 @@ var gulp = require('gulp'),
 	gls = require('gulp-live-server'),
 	watch = require('gulp-watch'),
 	htmlmin = require('gulp-htmlmin'),
-	inject = require('gulp-inject'),
-  imagemin = require('gulp-imagemin')
+	inject = require('gulp-inject')
 
 
  var librariesJS = [
@@ -26,31 +25,6 @@ var gulp = require('gulp'),
   'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700'
  ]
 
-//****************************** IMG *****************************
-
-gulp.task('img', function(callback) {
-  gulpSequence('minify-hotels-img')(callback)
-})
-
-/*
-  minify images in folder
- */
-gulp.task('minify-hotels-img', function() {
-  return gulp.src('source/images/**/*')
-        .pipe(imagemin([
-            imagemin.gifsicle({interlaced: true}),
-            imagemin.jpegtran({progressive: true}),
-            imagemin.optipng({optimizationLevel: 5}),
-            imagemin.svgo({
-                plugins: [
-                    {removeViewBox: true},
-                    {cleanupIDs: false}
-                ]
-            })
-
-          ]))
-        .pipe(gulp.dest('./public/assets/images'))
-})
 
 //****************************** JS ******************************
 
@@ -109,12 +83,6 @@ gulp.task('clean-assets', function() {
   return gulp.src(['./public/assets/css', './public/assets/js', './public/views/*.html'], {read: false})
     .pipe(clean())
 })
-
-gulp.task('clean-assets-prod', function() {
-  return gulp.src(['./public/assets/css', './public/assets/js', './public/views/*.html', './public/assets/images/*'], {read: false})
-    .pipe(clean())
-})
-
 
 //****************************** Start server ******************************
 /*
@@ -206,5 +174,3 @@ gulp.task('watch-files', function() {
 })
 
 gulp.task('default', gulpSequence('clean-assets', ['js', 'css'], 'html', 'watch-files', 'connect'))
-
-gulp.task('prod', gulpSequence('clean-assets-prod', ['js', 'css', 'img'], 'html', 'watch-files', 'connect'))
