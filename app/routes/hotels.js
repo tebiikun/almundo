@@ -2,8 +2,6 @@ const rest 			= require('restler');
 const express 		= require('express');
 const fs			= require('fs');
 const _ 			= require('underscore');
-const constants 	= require('../utils/constants');
-
 
 const router = express.Router()
 

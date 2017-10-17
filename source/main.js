@@ -6,7 +6,7 @@ var amApp = angular.module("amApp", ['ui.router', 'ng', 'amApp.constants'])
         .state('home', {
           url: '/',
           templateUrl: 'views/home.html',
-          controller: 'HotelController'
+          controller: 'HotelController as $ctrl'
         })
 
         $urlRouterProvider.otherwise('/')

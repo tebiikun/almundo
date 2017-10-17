@@ -3,7 +3,7 @@ angular.module('amApp')
 
     return {
       hoteles: function(name, stars) {
-        let queryFilter = 'name='+ name + '&stars=' + stars;
+        var queryFilter = 'name='+ name + '&stars=' + stars;
         return $http.get( API_END_POINT + 'hoteles/?'+queryFilter).then(function(resp) {
           return resp.data
         }, function(error) {

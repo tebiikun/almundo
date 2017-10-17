@@ -2,12 +2,6 @@
 
 angular
   	.module('amApp')
-	.directive('starDirective', [function() {
-		return {
-		  templateUrl: 'views/directives/star.html'
-		};
-	}])
-
 	.directive('rating', function() {
 		return {
 		  scope: {

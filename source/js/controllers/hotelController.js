@@ -1,23 +1,24 @@
 angular.module('amApp')
-.controller("HotelController", [ '$scope', '$http', 'HotelService', 'FILTER_ALL_STARS', 'FILTER_STARS', 'FILTER_NAME', 
+.controller("HotelController", [ '$scope', '$http', 'HotelService', 'FILTER_ALL_STARS', 'FILTER_STARS', 'FILTER_NAME',
 	function($scope, $http, HotelService, FILTER_ALL_STARS, FILTER_STARS, FILTER_NAME){
 
-	$scope.filterHotel = true;
-	$scope.filterStar = true;
-	$scope.filterMaster = true;
+	var $ctrl = this
 
+	$ctrl.filterHotel = true;
+	$ctrl.filterStar = true;
+	$ctrl.filterMaster = true;
 
-	$scope.filterAllStars = {
+	$ctrl.filterAllStars = {
 		value:true,
 		filterType: FILTER_ALL_STARS
 	}
 
-	$scope.nameFilter = {
+	$ctrl.nameFilter = {
 		value: '',
 		filterType:FILTER_NAME
 	}
 
-	$scope.filterArrayStars = [
+	$ctrl.filterArrayStars = [
 		{
 			filterValue:5,
 			value:false,
@@ -46,36 +47,42 @@ angular.module('amApp')
 
 	];
 
-	$scope.checkboxFilter=[];
+	$ctrl.checkboxFilter=[];
 
 	/*	si el tipo de filtro es distinto de allStars		*/
 	/*  recorro y armo la query sino			 			*/
 	/* 	descheckeo todo los filtros de estrellas			*/
 
 	$scope.setFilters = function(typeFilter){
-		var queryFilter = '';
-		
 
 		if(typeFilter == FILTER_STARS){
-			$scope.checkboxFilter =[];
-			$scope.filterAllStars.value = false;
-			for(filter in $scope.filterArrayStars){
-				if($scope.filterArrayStars[filter].value == true){
-					
-					$scope.checkboxFilter.push($scope.filterArrayStars[filter].filterValue);
+			$ctrl.checkboxFilter =[];
+			$ctrl.filterAllStars.value = false;
+			for(filter in $ctrl.filterArrayStars){
+				if($ctrl.filterArrayStars[filter].value == true){
+					$ctrl.checkboxFilter.push($ctrl.filterArrayStars[filter].filterValue);
 				}
 			}
+			/* ************************************************************************* */
+			/* si quito seleccion de todas las estrellas se selecciona por defecto TODAS */
+			/* ************************************************************************* */
+			if($ctrl.checkboxFilter.length == 0){
+				$ctrl.filterAllStars.value = true;
+			}
 		} else{
+			/* ************************************************************************* */
+			/* si selecciono TODAS descheckeo todos los otros filtros estrellas			 */
+			/* ************************************************************************* */
 			if(typeFilter == FILTER_ALL_STARS){
-				$scope.checkboxFilter=[]
-				for(filter in $scope.filterArrayStars){
-					$scope.filterArrayStars[filter].value = false;
+				$ctrl.checkboxFilter=[]
+				for(filter in $ctrl.filterArrayStars){
+					$ctrl.filterArrayStars[filter].value = false;
 				}
 			}
 			
 		}
 
-		HotelService.hoteles($scope.nameFilter.value, $scope.checkboxFilter.toString())
+		HotelService.hoteles($ctrl.nameFilter.value, $ctrl.checkboxFilter.toString())
 	    .then(function (response){
     		$scope.hoteles = response;
 	    }, function (error) {
@@ -83,7 +90,7 @@ angular.module('amApp')
 	    });
 	}
 
-    HotelService.hoteles($scope.nameFilter.value, $scope.checkboxFilter.toString())
+    HotelService.hoteles($ctrl.nameFilter.value, $ctrl.checkboxFilter.toString())
     .then(function (response){
     	$scope.hoteles = response;
     }, function (error) {

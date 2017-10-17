@@ -3,3 +3,4 @@ angular.module('amApp.constants', [])
 	.constant('FILTER_ALL_STARS', 'allStars')
 	.constant('FILTER_STARS', 'stars')
   	.constant('FILTER_NAME', 'name')
+  	

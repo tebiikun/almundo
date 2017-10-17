@@ -1,13 +1,15 @@
 var gulp = require('gulp'),
 	concat = require('gulp-concat'),
 	uglify = require('gulp-uglify'),
+  gutil  = require('gulp-util'),
 	gulpSequence = require('gulp-sequence'),
 	clean = require('gulp-clean'),
 	cleanCSS = require('gulp-clean-css'),
 	gls = require('gulp-live-server'),
 	watch = require('gulp-watch'),
 	htmlmin = require('gulp-htmlmin'),
-	inject = require('gulp-inject')
+	inject = require('gulp-inject'),
+  imagemin = require('gulp-imagemin')
 
 
  var librariesJS = [
@@ -24,6 +26,31 @@ var gulp = require('gulp'),
   'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700'
  ]
 
+//****************************** IMG *****************************
+
+gulp.task('img', function(callback) {
+  gulpSequence('minify-hotels-img')(callback)
+})
+
+/*
+  minify images in folder
+ */
+gulp.task('minify-hotels-img', function() {
+  return gulp.src('source/images/**/*')
+        .pipe(imagemin([
+            imagemin.gifsicle({interlaced: true}),
+            imagemin.jpegtran({progressive: true}),
+            imagemin.optipng({optimizationLevel: 5}),
+            imagemin.svgo({
+                plugins: [
+                    {removeViewBox: true},
+                    {cleanupIDs: false}
+                ]
+            })
+
+          ]))
+        .pipe(gulp.dest('./public/assets/images'))
+})
 
 //****************************** JS ******************************
 
@@ -45,6 +72,7 @@ gulp.task('build-js', function() {
 gulp.task('minify-js', function() {
   return gulp.src(['./source/main.js', './source/js/**/*.js'])
     .pipe(concat('main.js'))
+    .pipe(uglify()).on('error', function (err) { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
     .pipe(gulp.dest('./public/assets/js'))
 })
 
@@ -79,6 +107,11 @@ gulp.task('minify-css', function() {
  */
 gulp.task('clean-assets', function() {
   return gulp.src(['./public/assets/css', './public/assets/js', './public/views/*.html'], {read: false})
+    .pipe(clean())
+})
+
+gulp.task('clean-assets-prod', function() {
+  return gulp.src(['./public/assets/css', './public/assets/js', './public/views/*.html', './public/assets/images/*'], {read: false})
     .pipe(clean())
 })
 
@@ -173,3 +206,5 @@ gulp.task('watch-files', function() {
 })
 
 gulp.task('default', gulpSequence('clean-assets', ['js', 'css'], 'html', 'watch-files', 'connect'))
+
+gulp.task('prod', gulpSequence('clean-assets-prod', ['js', 'css', 'img'], 'html', 'watch-files', 'connect'))

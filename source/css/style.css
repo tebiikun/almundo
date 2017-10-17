@@ -231,13 +231,6 @@ section{
 	height: 17px;
 }
 
-.star-icon{
-    width: 17px;
-    height: 17px;
-    display: block;
-	background-image: url(../images/icons/filters/star.svg);
-}
-
 .amenities{
 	padding-right: 10px;
 	display: inline-block;
