@@ -2,10 +2,9 @@
   "name": "almundo",
   "version": "1.0.0",
   "description": "examen almundo",
-  "main": "server.js",
+  "main": "app.js",
   "scripts": {
-    "test": "hola mundo",
-    "start": "node server.js"
+    "start": "node app.js"
   },
   "author": "esteban ciccarelli",
   "license": "ISC",
@@ -29,7 +28,6 @@
     "gulp-htmlmin": "^3.0.0",
     "gulp-inject": "^4.3.0",
     "gulp-live-server": "0.0.31",
-    "gulp-rev": "^8.0.0",
     "gulp-sequence": "^0.4.6",
     "gulp-uglify": "^3.0.0",
     "gulp-watch": "^4.3.11"

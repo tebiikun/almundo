@@ -24,7 +24,6 @@
 
 
         <!-- endinject -->
-
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -32,14 +31,11 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
     </head>
-    <body>
-
-    <ng-include src="'views/header.html'"></ng-include>
-
-    <ui-view></ui-view>
-
-    <ng-include src="'views/footer.html'"></ng-include>
-
+    <body class="errorPage">
+        <div>
+            <h1>Oops! No encontramos lo que estabas buscando</h1>
+            <img src="assets/images/logo-almundo.svg">    
+        </div>
     <!-- inject:js -->
 
     <script src="assets/js/angular.min.js"></script>
@@ -53,8 +49,5 @@
     <script src="assets/js/main.js"></script>
 
     <!-- endinject -->
-
-    <script src="http://code.angularjs.org/1.0.8/i18n/angular-locale_es-es.js"></script>
-
     </body>
 </html>

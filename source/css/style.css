@@ -26,7 +26,18 @@ label{
     font-weight: 700;
     margin-bottom: 0;
 }
-
+.errorPage{
+	background-color: #002c77;
+}
+.errorPage>div{
+	width: 100%;
+	color: #fff; 
+	position: absolute;
+	top: 50%; 
+	height: 100px;
+	margin-top: -50px;
+	text-align: center;
+}
 .row {
     margin-right: -8px;
     margin-left: -8px;

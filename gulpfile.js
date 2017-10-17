@@ -4,7 +4,6 @@ var gulp = require('gulp'),
 	gulpSequence = require('gulp-sequence'),
 	clean = require('gulp-clean'),
 	cleanCSS = require('gulp-clean-css'),
-	rev = require('gulp-rev'),
 	gls = require('gulp-live-server'),
 	watch = require('gulp-watch'),
 	htmlmin = require('gulp-htmlmin'),
@@ -15,7 +14,8 @@ var gulp = require('gulp'),
  	'./node_modules/angular/angular.min.js',
  	'./node_modules/angular-ui-router/release/angular-ui-router.min.js',
  	'./node_modules/bootstrap/dist/js/bootstrap.min.js',
- 	'./node_modules/underscore/underscore.js'
+ 	'./node_modules/underscore/underscore.js',
+  './node_modules/jquery/dist/jquery.min.js',
  ]
 
  var librariesCSS = [
@@ -45,7 +45,7 @@ gulp.task('build-js', function() {
 gulp.task('minify-js', function() {
   return gulp.src(['./source/main.js', './source/js/**/*.js'])
     .pipe(concat('main.js'))
-    .pipe(gulp.dest('./public'))
+    .pipe(gulp.dest('./public/assets/js'))
 })
 
 
@@ -125,22 +125,32 @@ gulp.task('minify-html', function() {
 /*
  Inject JS files in index file
  */
-gulp.task('inject', ['copy-index-html'], function() {
+gulp.task('inject', ['copy-index-html','copy-error-html'], function() {
+
   var injected_files = 
   	[
+    
     './public/assets/js/angular.min.js',
+    './public/assets/js/angular-ui-router.min.js',
+    './public/assets/js/jquery.min.js',
     './public/assets/js/bootstrap.min.js',
-    './public/assets/js/main-*.js',
+    
+    './public/assets/js/main.js',
     './public/assets/css/*.css'
     ]
 
-  return gulp.src('./public/index.html')
+  return gulp.src(['./public/index.html','./public/error.html'])
     .pipe(inject(gulp.src(injected_files, {read: false}), {relative: true}))
     .pipe(gulp.dest('./public'))
 })
 
 gulp.task('copy-index-html', function() {
   return gulp.src('./source/index.html')
+    .pipe(gulp.dest('./public'))
+})
+
+gulp.task('copy-error-html', function() {
+  return gulp.src('./source/error.html')
     .pipe(gulp.dest('./public'))
 })
 
@@ -152,7 +162,8 @@ gulp.task('watch-files', function() {
   return gulp.watch(
     [
       './source/**/*.js',
-      './source/**/*.html'
+      './source/**/*.html',
+      './source/**/*.css'
     ],
     function() {
       gulpSequence('clean-assets', ['js', 'css'], 'html')(function(err) {

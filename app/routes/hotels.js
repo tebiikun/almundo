@@ -35,16 +35,4 @@ router.get('/', function(req, res) {
 
 });
 
-// reescribe la ruta de las imagenes y quita decimales al precio
-function parseImage(data){
-	if(data && data.length > 0){
-      _.map(data, function(hotel) {
-      	hotel.image = constants.IMAGE_HOTEL_ROUTE + hotel.image;
-      	hotel.price = Math.trunc(hotel.price)
-      });
-    }
-	console.log(data);
-	return data;
-}
-
 module.exports = router;

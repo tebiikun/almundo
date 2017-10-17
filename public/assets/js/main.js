@@ -66,24 +66,28 @@ angular.module('amApp')
 
 	];
 
+	$scope.checkboxFilter=[];
+
 	/*	si el tipo de filtro es distinto de allStars		*/
 	/*  recorro y armo la query sino			 			*/
 	/* 	descheckeo todo los filtros de estrellas			*/
 
 	$scope.setFilters = function(typeFilter){
 		var queryFilter = '';
-		var checkboxFilter = [];
+		
 
 		if(typeFilter == FILTER_STARS){
+			$scope.checkboxFilter =[];
 			$scope.filterAllStars.value = false;
 			for(filter in $scope.filterArrayStars){
 				if($scope.filterArrayStars[filter].value == true){
-
-					checkboxFilter.push($scope.filterArrayStars[filter].filterValue);
+					
+					$scope.checkboxFilter.push($scope.filterArrayStars[filter].filterValue);
 				}
 			}
 		} else{
 			if(typeFilter == FILTER_ALL_STARS){
+				$scope.checkboxFilter=[]
 				for(filter in $scope.filterArrayStars){
 					$scope.filterArrayStars[filter].value = false;
 				}
@@ -91,9 +95,7 @@ angular.module('amApp')
 			
 		}
 
-		queryFilter = 'name='+ $scope.nameFilter.value + '&stars=' + checkboxFilter.toString();
-
-		HotelService.all(queryFilter)
+		HotelService.hoteles($scope.nameFilter.value, $scope.checkboxFilter.toString())
 	    .then(function (response){
     		$scope.hoteles = response;
 	    }, function (error) {
@@ -101,7 +103,7 @@ angular.module('amApp')
 	    });
 	}
 
-    HotelService.all()
+    HotelService.hoteles($scope.nameFilter.value, $scope.checkboxFilter.toString())
     .then(function (response){
     	$scope.hoteles = response;
     }, function (error) {
@@ -142,9 +144,9 @@ angular.module('amApp')
   .factory('HotelService', ['$http', 'API_END_POINT', function($http, API_END_POINT) {
 
     return {
-      all: function(query) {
-        console.log(query);
-        return $http.get( API_END_POINT + 'hoteles/?'+query).then(function(resp) {
+      hoteles: function(name, stars) {
+        let queryFilter = 'name='+ name + '&stars=' + stars;
+        return $http.get( API_END_POINT + 'hoteles/?'+queryFilter).then(function(resp) {
           return resp.data
         }, function(error) {
           return error.data
