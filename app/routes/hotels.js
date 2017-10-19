@@ -6,8 +6,8 @@ const _ 			= require('underscore');
 const router = express.Router()
 
 router.get('/', function(req, res) {
-	let stars = req.query.stars;
-	let name = req.query.name;
+	var stars = req.query.stars;
+	var name = req.query.name;
 	fs.readFile('./data/data.json', 'utf8', function(err, data){
 
 		if(err) throw err;
